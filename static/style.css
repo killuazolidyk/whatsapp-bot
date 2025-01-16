@@ -1,0 +1,356 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 90vh;
+    background-image: url(background.png);
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    padding: 30px 100px;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #128C7E;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+#chat-list {
+    list-style-type: none;
+    padding: 0;
+    width: 90%;
+    position: relative;
+}
+
+#chat-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #0a6e5c;
+}
+
+#chat-list li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#chat-list li .chat-info {
+    flex: 1;
+}
+
+#chat-list li .chat-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+#chat-list li .chat-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+#chat-list li:hover {
+    background-color: #0a6e5c;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F2F5;
+}
+
+.chat-header {
+    margin: 5px 0px;
+    padding: 5px;
+    border-bottom: 1px solid #F0F2F5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 0px 20px;
+    overflow-y: auto;
+    background-image: url(chat-bot-background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    scroll-behavior: smooth; 
+}
+
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: #128C7E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* تصميم قسم الترحيب */
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    background-image: url(welcome\ screen\ image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:bottom;
+}
+
+.welcome-screen img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.welcome-screen h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #128C7E;
+}
+
+.welcome-screen p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0 0;
+}
+
+/* إخفاء شريط الدردشة وحقل الإدخال عند فتح الواجهة */
+.chat-header, .chat-input {
+    display: none;
+}
+
+/* إظهار شريط الدردشة وحقل الإدخال عند اختيار محادثة */
+.chat-header.active, .chat-input.active {
+    display: flex;
+    
+}
+
+/* تنسيقات الرسائل */
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    max-width: 75%;
+    position: relative;
+    clear: both;
+    
+}
+
+.message.user {
+    background-color: #ffffff;  /* لون خلفية رسائل العميل */
+    float: left;
+    margin-left: 20px;
+    border: 1px solid #eee;
+}
+
+.message.bot {
+    background-color: #dcf8c6;  /* لون خلفية رسائل البوت */
+    float: right;
+    margin-right: 20px;
+}
+
+.message-content {
+    word-wrap: break-word;
+    font-size: 20px;
+}
+
+.timestamp {
+    font-size: 10px;
+    color: #999;
+    text-align: right;
+    margin-top: 5px;
+}
+
+/* تنسيق حقول البحث */
+#search-chats-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#search-messages-input{
+    width: 40%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 20px;
+}
+
+/* تنسيق الرسائل المخفية */
+#chat-messages .message[style*="none"] {
+    display: none !important;
+}
+
+/* خلفية شفافة داكنة */
+.popup-overlay {
+    display: none; /* مخفي بشكل افتراضي */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* للتأكد من ظهورها فوق كل العناصر */
+}
+
+/* تصميم النافذة المنبثقة */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.popup-content h3 {
+    margin-bottom: 15px;
+}
+
+.popup-content input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#save-name-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#cancel-edit-button {
+    background-color: #f44336;
+    color: white;
+}
+.mark-important{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.back-button{
+    display: none;
+}
+
+/* تنسيقات عامة للهواتف */
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .main-content {
+        display: none; /* إخفاء الدردشة بشكل افتراضي */
+        width: 100%;
+        height: 100vh;
+    }
+
+    .chat-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #128C7E;
+        color: white;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .chat-messages{
+        padding: 0;
+    }
+
+    .back-button {
+        display: block; /* إظهار زر العودة */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .back-button:hover {
+        text-decoration: underline;
+    }
+
+    /* إظهار الدردشة عند النقر على محادثة */
+    .main-content.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* إخفاء قائمة المحادثات عند عرض الدردشة */
+    .sidebar.hidden {
+        display: none;
+    }
+}
+
+
+

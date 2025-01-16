@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>المحادثات</h2>
+            <input type="text" id="search-chats-input" placeholder="بحث في المحادثات...">
+            <ul id="chat-list">
+                <!-- سيتم ملء هذه القائمة بالدردشات الديناميكية -->
+            </ul>
+            <div id="popup-overlay" class="popup-overlay">
+                <div class="popup-content">
+                    <h3>تعديل اسم المحادثة</h3>
+                    <input type="text" id="edit-name-input" placeholder="أدخل الاسم الجديد">
+                    <button id="save-name-button">حفظ</button>
+                    <button id="cancel-edit-button">إلغاء</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-header">
+                <!-- زر العودة إلى قائمة المحادثات (يظهر فقط على الهواتف) -->
+                <button id="back-to-chats" class="back-button">← العودة</button>
+                <h2 id="chat-title">اختر محادثة</h2>
+                <input type="text" id="search-messages-input" placeholder="بحث في الرسائل..." disabled>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- الرسائل ستظهر هنا -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="اكتب رسالة..." disabled>
+                <button id="send-button" disabled>إرسال</button>
+            </div>
+            <!-- قسم التصميم الأنيق قبل اختيار أي محادثة -->
+            <div id="welcome-screen" class="welcome-screen">
+            </div>
+        </div>
+    </div>
+    <script>
+        // تمرير المسار الصحيح للصورة الرمزية إلى JavaScript
+        const avatarUrl = "{{ url_for('static', filename='avatars/default.webp') }}";
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
